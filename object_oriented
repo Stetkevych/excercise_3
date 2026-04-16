@@ -1,0 +1,80 @@
+class Student:
+    def __init__(self, name, age, grade):
+        self.name = str(name)
+        self.age = int(age)
+        self.grade = int(grade)
+        
+    def add_grade(self, new_grade, grades):
+        grades = []
+        grades.append(new_grade)
+        return grades
+    
+    def average_grade(self,grades):
+        average = sum(grades) / len(grades)
+        return average
+    
+    def display(info):
+        print(f"Name: {info.name}")
+        print(f"Age: {info.age}")
+        print(f"Grade: {info.grade}")
+        
+    #create 3 students
+    #dif names, emails , initial grades
+    #add 2 new grades to each student
+    
+    student_dict = {
+        "Student1": {"name": "Alice", "email": "alice@example.com", "grade" : 85},
+        "Student2": {"name" : "Albert", "email": "albert@example.com", "grade": 90},
+        "Student3": {"name": "Bob", "email": "bob@example.com", "grade": 80}
+                }
+    
+    
+    def get_student_by_email(email, student_dict):
+        for student in student_dict:
+            if student_dict[student]["email"] == email:
+                return student_dict[student]
+        return "Student not found"
+    
+    def print_grade(student_dict):
+        for student in student_dict:
+            print(f"{student_dict[student]['name']}'s grade: {student_dict[student]['grade']}")
+                  
+    student_tuple = tuple(student_dict.items())
+
+    try:
+        student_tuple[2] = ("grade", 95)
+    except TypeError:
+        print("Tuples are immutable, cannot modify")
+        
+        
+    for student in student_dict:
+        student
+
+
+    def add_Grade(student_dict):
+        student_dict["Student1"]["grade"] = [90, 95]
+        student_dict["Student2"]["grade"] = [92, 88]
+        student_dict["Student3"]["grade"] = [85, 90]
+    
+    add_Grade(student_dict)
+
+
+    def remove_element(student_dict):
+        for student in student_dict:
+            student_dict[student]["grade"].pop()
+    
+        print(student_dict[0], student_dict[-1])
+        
+        
+        print(len(student_dict))
+        
+        #bonus
+    
+    count = 0
+    
+    for student in student_dict:
+        for grade in student_dict[student]["grade"]:
+            if grade > 90:
+                count += 1
+    
+    print(f"Number of grades above 90: {count}")
